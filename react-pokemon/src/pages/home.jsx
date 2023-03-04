@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import PokemonCard from '../components/pokemon-card.component';
 import { getPokemons } from '../utils/fetch';
-import { MainContainer, LeftContentContainer, RightContentContainer, SearchContainer, PokemonCard } from "../components.pokemon-card.styled";
+import { MainContainer, LeftContentContainer, SearchContainer, RightContentContainer } from '../components/pokemon-card.styled';
 
 const Home = () => {
   const [pokemons, setPokemons] = useState();
