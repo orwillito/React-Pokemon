@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import PokemonCard from '../components/pokemon-card.component';
 import { getPokemons } from '../utils/fetch';
-
+import { MainContainer, LeftContentContainer, RightContentContainer, SearchContainer, PokemonCard } from "../components.pokemon-card.styled";
 
 const Home = () => {
   const [pokemons, setPokemons] = useState();
@@ -19,19 +19,19 @@ const Home = () => {
   return (
     <>
       <h1>Home Page</h1>
-      <div className='main-container'>
-        <div className='left-content-container'>
-          <div className='search-container'>
+      <MainContainer>
+        <LeftContentContainer>
+          <SearchContainer>
 
-          </div>
+          </SearchContainer>
           {pokemons?.map((pokemon) => (
             <PokemonCard pokemon={pokemon} />
           ))};
-        </div>
-        <div className='right-content-container'>
+        </LeftContentContainer>
+        <RightContentContainer>
             
-        </div>
-      </div>
+        </RightContentContainer>
+      </MainContainer>
     </>
   );
 };
