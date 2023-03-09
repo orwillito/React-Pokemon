@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getPokemons = () => {
   return axios
-  .get('https://pokeapi.co/api/v2/pokemon')
+  .get('https://pokeapi.co/api/v2/pokemon?limit=150&offset=0')
   .then ((res) => res.data.results)
   .catch((err) => console.log('error =>', err));
 };
@@ -13,3 +13,11 @@ export const getPokemonIds = (id) => {
   .then((res) => res.data)
   .catch((err) => console.log('error =>', err));
 };
+
+export const getSearchPokemon = (searchPokemon) => {
+  return axios
+  .get(`https://pokeapi.co/api/v2/pokemon/${searchPokemon}`)
+  .then((res) => res.data)
+  .catch((err) => console.log('error =>', err));
+};
+
