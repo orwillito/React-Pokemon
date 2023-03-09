@@ -1,9 +1,15 @@
 import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
 import PokemonCard from '../components/pokemon-card.component';
-import { getPokemons, getSearchPokemon } from '../utils/fetch';
-import { MainContainer, LeftContentContainer, SearchContainer, RightContentContainer } from '../components/pokemon-card.styled';
+import { getPokemons } from '../utils/fetch';
+import { 
+  MainContainer, 
+  LeftContentContainer, 
+  RightContentContainer, 
+  SearchContainer, 
+   } from "../components/pokemon-card.styled";
+import PokemonProfile from '../components/pokemon-profile.component';
+
+
 
 const Home = () => {
   const [pokemons, setPokemons] = useState();
@@ -59,21 +65,25 @@ const Home = () => {
 
   return (
     <>
+    
       <h1>Home Page</h1>
       <MainContainer>
         <LeftContentContainer>
           <SearchContainer>
             <input onChange={handleChange} placeholder='Search Pokemon' value={pokemonProfile}/>
           </SearchContainer>
-          {pokemons?.map((pokemon) => (
-            <PokemonCard pokemon={pokemon} />
-          ))};
+          {pokemons?.map((pokemon) => {
+            console.log(pokemon)
+            return (
+            <PokemonCard pokemon={pokemon} key={pokemon.name} />
+              
+          )})};
         </LeftContentContainer>
         <RightContentContainer>
-            
+           <PokemonProfile />
         </RightContentContainer>
       </MainContainer>
-    </>
+      </>
   );
 };
 
