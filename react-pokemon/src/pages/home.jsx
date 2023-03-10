@@ -1,89 +1,66 @@
-import React, { useEffect, useState, useContext } from 'react';
-import PokemonCard from '../components/pokemon-card.component';
-import { getPokemons } from '../utils/fetch';
-import { 
-  MainContainer, 
-  LeftContentContainer, 
-  RightContentContainer, 
-  SearchContainer, 
-   } from "../components/pokemon-card.styled";
-import PokemonProfile from '../components/pokemon-profile.component';
+import React, { useEffect, useState, useContext, useMemo } from "react";
+import PokemonCard from "../components/pokemon-card.component";
+import { getPokemons } from "../utils/fetch";
 
-
+import {
+  MainContainer,
+  LeftContentContainer,
+  RightContentContainer,
+  SearchContainer,
+} from "../components/pokemon-card.styled";
+import PokemonProfile from "../components/pokemon-profile.component";
 
 const Home = () => {
   const [pokemons, setPokemons] = useState();
   const [searchPokemon, setSearchPokemon] = useState("");
-  const [pokemonProfile, setPokemonProfile] = useState();
-  
-
-
-
-  // useEffect(() => {
-  //   if(searchPokemon && searchPokemon !== "") {
-  //     getSearchPokemon(searchPokemon).then((data) => {
-  //       // setSearchPokemon(data);
-  //       //console.log('result', data);
-  //     });
-  //   }
-   
-  // }, [searchPokemon]);
-  
+  const [pokeProfile, setPokeProfile] = useState();
 
   useEffect(() => {
     getPokemons().then((data) => {
       setPokemons(data);
     });
   }, []);
-  
-  //console.log('result => ', pokemons);
-  
-  //console.log('results', filterPokemon);
-  
+
+  const filtered = useMemo(() => {
+    return pokemons?.filter((pokemon) => {
+      return searchPokemon.length > 0
+        ? pokemon.name.includes(searchPokemon)
+        : true;
+    });
+  }, [searchPokemon, pokemons]);
 
   const handleChange = (e) => {
-    const textInput = e.target.value.toLowerCase();
-
-    //const filterPokemon = pokemons.filter(pokemon => pokemon?.name);
-    pokemons?.map((pokemon) => {
-      const name = pokemon?.name
-      if (name.toLowerCase().includes(textInput.toLowerCase())) {
-        console.log('this is the name', name);
-        setSearchPokemon(name);
-      } else {
-
-      }
-    });
-    console.log('filter', textInput);
-    setPokemonProfile(textInput)
-    //compare text input to allPokemon 
-    //hint: filter(), find(), contains()
-    
-  }
-  
-  console.log('search result', searchPokemon); 
+    setSearchPokemon(e.target.value.toLowerCase());
+  };
 
   return (
     <>
-    
       <h1>Home Page</h1>
       <MainContainer>
         <LeftContentContainer>
           <SearchContainer>
-            <input onChange={handleChange} placeholder='Search Pokemon' value={pokemonProfile}/>
+            <input onChange={handleChange} placeholder="Search Pokemon" />
           </SearchContainer>
-          {pokemons?.map((pokemon) => {
-            console.log(pokemon)
-            return (
-            <PokemonCard pokemon={pokemon} key={pokemon.name} />
-              
-          )})};
+          {pokemons ? (
+            filtered.map((pokemon) => {
+              return (
+                <PokemonCard
+                  pokemon={pokemon}
+                  key={pokemon.name}
+                  setPokeProfile={setPokeProfile}
+                />
+              );
+            })
+          ) : (
+            <p>Loading...</p>
+          )}
+          ;
         </LeftContentContainer>
         <RightContentContainer>
-           <PokemonProfile />
+          <PokemonProfile pokeProfile={pokeProfile} />
         </RightContentContainer>
       </MainContainer>
-      </>
+    </>
   );
 };
 

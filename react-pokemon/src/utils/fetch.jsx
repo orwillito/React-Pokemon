@@ -13,11 +13,3 @@ export const getPokemonIds = (id) => {
   .then((res) => res.data)
   .catch((err) => console.log('error =>', err));
 };
-
-export const getSearchPokemon = (searchPokemon) => {
-  return axios
-  .get(`https://pokeapi.co/api/v2/pokemon/${searchPokemon}`)
-  .then((res) => res.data)
-  .catch((err) => console.log('error =>', err));
-};
-
