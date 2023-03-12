@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { PokemonProfileStyle } from "./pokemon-card.styled";
-import { getPokemonIds } from "../utils/fetch";
+import {
+  PokemonProfileStyle,
+  PokePicture,
+  PokeAvatar,
+} from "../utils/ComponentsStylesheet";
 
-export default function PokemonProfile({ pokeProfile }) {
+const PokemonProfile = ({ pokeProfile }) => {
   console.log("data", pokeProfile);
 
   return (
@@ -11,6 +14,13 @@ export default function PokemonProfile({ pokeProfile }) {
         <p>Select Pokemon Card</p>
       ) : (
         <>
+          <PokePicture>
+            <PokeAvatar
+              src={pokeProfile.sprites.other.home.front_default}
+              alt="PokeImage"
+            />
+          </PokePicture>
+
           <p>No. {pokeProfile.id}</p>
           <p>{pokeProfile.name}</p>
           <p>Height: {pokeProfile.height}</p>
@@ -21,4 +31,5 @@ export default function PokemonProfile({ pokeProfile }) {
       )}
     </PokemonProfileStyle>
   );
-}
+};
+export default PokemonProfile;

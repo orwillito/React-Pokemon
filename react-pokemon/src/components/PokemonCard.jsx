@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getPokemonIds } from "../utils/fetch";
-import { PokemonCardStyle, Avatar } from "./pokemon-card.styled";
-import PokemonProfile from "./pokemon-profile.component";
+import { PokemonCardStyle, Avatar } from "../utils/ComponentsStylesheet";
 
 const PokemonCard = ({ pokemon, setPokeProfile }) => {
   const [pokemonInfos, setPokemonInfos] = useState();

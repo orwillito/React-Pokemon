@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useContext, useMemo } from "react";
-import PokemonCard from "../components/pokemon-card.component";
+import React, { useEffect, useState, useMemo } from "react";
 import { getPokemons } from "../utils/fetch";
 
 import {
@@ -7,8 +6,11 @@ import {
   LeftContentContainer,
   RightContentContainer,
   SearchContainer,
-} from "../components/pokemon-card.styled";
-import PokemonProfile from "../components/pokemon-profile.component";
+  LoadingStyle,
+  PokemonCardContainer,
+} from "../utils/ComponentsStylesheet";
+import PokemonProfile from "../components/PokemonProfile";
+import PokemonCard from "../components/PokemonCard";
 
 const Home = () => {
   const [pokemons, setPokemons] = useState();
@@ -41,20 +43,22 @@ const Home = () => {
           <SearchContainer>
             <input onChange={handleChange} placeholder="Search Pokemon" />
           </SearchContainer>
-          {pokemons ? (
-            filtered.map((pokemon) => {
-              return (
-                <PokemonCard
-                  pokemon={pokemon}
-                  key={pokemon.name}
-                  setPokeProfile={setPokeProfile}
-                />
-              );
-            })
-          ) : (
-            <p>Loading...</p>
-          )}
-          ;
+          <PokemonCardContainer>
+            {pokemons ? (
+              filtered.map((pokemon) => {
+                return (
+                  <PokemonCard
+                    pokemon={pokemon}
+                    key={pokemon.name}
+                    setPokeProfile={setPokeProfile}
+                  />
+                );
+              })
+            ) : (
+              <LoadingStyle>Loading...</LoadingStyle>
+            )}
+            ;
+          </PokemonCardContainer>
         </LeftContentContainer>
         <RightContentContainer>
           <PokemonProfile pokeProfile={pokeProfile} />
