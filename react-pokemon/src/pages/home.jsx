@@ -8,6 +8,7 @@ import {
   SearchContainer,
   LoadingStyle,
   PokemonCardContainer,
+  SearchPokemonStyle,
 } from "../utils/ComponentsStylesheet";
 import PokemonProfile from "../components/PokemonProfile";
 import PokemonCard from "../components/PokemonCard";
@@ -37,11 +38,13 @@ const Home = () => {
 
   return (
     <>
-      <h1>Home Page</h1>
       <MainContainer>
         <LeftContentContainer>
           <SearchContainer>
-            <input onChange={handleChange} placeholder="Search Pokemon" />
+            <SearchPokemonStyle
+              onChange={handleChange}
+              placeholder="Search Pokemon"
+            />
           </SearchContainer>
           <PokemonCardContainer>
             {pokemons ? (

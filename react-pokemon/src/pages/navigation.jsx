@@ -1,11 +1,13 @@
 import { NavLink, Outlet } from "react-router-dom";
-import PokeLogo from "../assets/pokeball.png";
+import PokeLogo from "../assets/pokeball.svg";
 
 import {
   NavigationContainer,
   LogoContainer,
   NavTabs,
   Logo,
+  LogoText,
+  NavLinkStyle,
 } from "../utils/ComponentsStylesheet";
 
 const Navigation = () => {
@@ -14,21 +16,14 @@ const Navigation = () => {
       <NavigationContainer>
         <LogoContainer to="/">
           <Logo src={PokeLogo} />
-          Choose your party!
+          <LogoText>Choose your party!</LogoText>
         </LogoContainer>
         <NavTabs>
-          <NavLink to="/" style={{ textDecoration: "none", color: "white" }}>
-            Home
+          <NavLink to="/">
+            <NavLinkStyle>Home</NavLinkStyle>
           </NavLink>
-          <NavLink
-            to="/devs"
-            style={{
-              textDecoration: "none",
-              color: "white",
-              paddingLeft: "1rem",
-            }}
-          >
-            Devs
+          <NavLink to="/devs">
+            <NavLinkStyle>Devs</NavLinkStyle>
           </NavLink>
         </NavTabs>
       </NavigationContainer>
