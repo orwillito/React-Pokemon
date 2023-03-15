@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getPokemonIds } from "../utils/fetch";
-import { PokemonCardStyle, Avatar } from "../utils/ComponentsStylesheet";
+import {
+  PokemonCardStyle,
+  Avatar,
+  TypeClassStyle,
+} from "../utils/ComponentsStylesheet";
 
 const PokemonCard = ({ pokemon, setPokeProfile }) => {
   const [pokemonInfos, setPokemonInfos] = useState();
@@ -25,10 +29,12 @@ const PokemonCard = ({ pokemon, setPokeProfile }) => {
           alt="PokeImage"
         />
 
-        <h3>Pokemon Info:</h3>
-        <p>ID: {pokemonInfos?.id}</p>
-        <p>Name: {pokemon.name}</p>
-        <p>Type: {pokemonInfos?.types[0].type.name}</p>
+        <h3>No. {pokemonInfos?.id}</h3>
+        <h2>{pokemon.name}</h2>
+
+        <TypeClassStyle type={pokemonInfos?.types[0].type.name}>
+          <h4>{pokemonInfos?.types[0].type.name}</h4>
+        </TypeClassStyle>
       </PokemonCardStyle>
     </>
   );
