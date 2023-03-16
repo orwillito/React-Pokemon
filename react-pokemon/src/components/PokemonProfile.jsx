@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import { RouterProvider } from "react-router-dom";
 import {
   PokemonProfileStyle,
   PokePicture,
@@ -16,17 +17,27 @@ import {
   ProfileStandby,
 } from "../utils/ComponentsStylesheet";
 
-const PokemonProfile = ({ pokeProfile }) => {
-  console.log("data", pokeProfile);
-  const [party, setParty] = useState();
+const PokemonProfile = ({ pokeProfile, party, setParty }) => {
+  // console.log("data", pokeProfile);
 
-  useEffect(() => {
-    getPokemonIds;
-  });
+  //const chosenPokemon = useMemo --> filter/includes/contains --> pokeProfile in the party --> true/false
+  // const PartyLabel = useMemo(() => {
+  //   return party?.filter((party) => {
+  //     party.collections.length > 0
+  //   })
+  // })
 
   const handleClick = () => {
-    setParty(pokeProfile);
+    //console.log("this =>", pokeProfile.name);
+    if (party === undefined || party.length === 0) {
+      setParty({ collections: [pokeProfile] });
+    } else {
+      setParty((prevState) => ({
+        collections: [...prevState.collections, pokeProfile],
+      }));
+    }
   };
+  console.log("party result", party.collections.length);
 
   return (
     <PokemonProfileStyle>
@@ -112,9 +123,11 @@ const PokemonProfile = ({ pokeProfile }) => {
             </RightColumn>
           </MainDiv>
           <ButtonContainer>
-            <ChooseYouButton key={pokemon.name} onClick={handleClick}>
-              I choose you
-            </ChooseYouButton>
+            {party?.collections.length < 6 && (
+              <ChooseYouButton key={pokeProfile.name} onClick={handleClick}>
+                I choose you
+              </ChooseYouButton>
+            )}
           </ButtonContainer>
         </>
       )}

@@ -9,14 +9,17 @@ import {
   LoadingStyle,
   PokemonCardContainer,
   SearchPokemonStyle,
+  PokemonPartyContainer,
 } from "../utils/ComponentsStylesheet";
 import PokemonProfile from "../components/PokemonProfile";
 import PokemonCard from "../components/PokemonCard";
+import PartyOfSix from "../components/PokemonParty";
 
 const Home = () => {
   const [pokemons, setPokemons] = useState();
   const [searchPokemon, setSearchPokemon] = useState("");
   const [pokeProfile, setPokeProfile] = useState();
+  const [party, setParty] = useState({ collections: [] });
 
   useEffect(() => {
     getPokemons().then((data) => {
@@ -40,6 +43,9 @@ const Home = () => {
     <>
       <MainContainer>
         <LeftContentContainer>
+          <PokemonPartyContainer>
+            <PartyOfSix pokeProfile={pokeProfile} party={party} />
+          </PokemonPartyContainer>
           <SearchContainer>
             <SearchPokemonStyle
               onChange={handleChange}
@@ -60,11 +66,14 @@ const Home = () => {
             ) : (
               <LoadingStyle>Loading...</LoadingStyle>
             )}
-            ;
           </PokemonCardContainer>
         </LeftContentContainer>
         <RightContentContainer>
-          <PokemonProfile pokeProfile={pokeProfile} />
+          <PokemonProfile
+            pokeProfile={pokeProfile}
+            party={party}
+            setParty={setParty}
+          />
         </RightContentContainer>
       </MainContainer>
     </>
