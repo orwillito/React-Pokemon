@@ -203,7 +203,7 @@ export const ChooseYouButton = styled.button`
   text-align: center;
   color: white;
   font-weight: 900;
-  background-color: red;
+  background-color: ${props => props.disabled ? "gray" : "red"};
 `;
 
 export const TypeClassStyle = styled.div`

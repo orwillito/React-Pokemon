@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { PokeAvatar } from "../utils/ComponentsStylesheet";
 
 const PokePartyBox = styled.div`
   display: flex;
@@ -24,9 +25,13 @@ const PartyOfSix = ({ party }) => {
 
   return (
     <>
-      {pokemonParty?.map((partyItem) => {
-        console.log("this is party item", partyItem);
-      })}
+      {pokemonParty?.map((partyItem) => (
+        <PokeAvatar
+          src={partyItem.sprites.other.dream_world.front_default}
+          alt="Pokemon Image"
+        ></PokeAvatar>
+        // console.log("this is party item", partyItem);
+      ))}
     </>
   );
 };

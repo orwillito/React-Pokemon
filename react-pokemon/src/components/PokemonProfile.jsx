@@ -18,17 +18,19 @@ import {
 } from "../utils/ComponentsStylesheet";
 
 const PokemonProfile = ({ pokeProfile, party, setParty }) => {
-  // console.log("data", pokeProfile);
-
-  //const chosenPokemon = useMemo --> filter/includes/contains --> pokeProfile in the party --> true/false
-  // const PartyLabel = useMemo(() => {
-  //   return party?.filter((party) => {
-  //     party.collections.length > 0
-  //   })
-  // })
+  const partyLabel = useMemo(() => {
+    if (
+      (pokeProfile !== undefined && party !== undefined) ||
+      party.length > 1
+    ) {
+      // return party.collections.includes(pokeProfile.name);
+      return party.collections.some(
+        (partyItem) => partyItem.name === pokeProfile.name
+      );
+    }
+  }, [party, pokeProfile]);
 
   const handleClick = () => {
-    //console.log("this =>", pokeProfile.name);
     if (party === undefined || party.length === 0) {
       setParty({ collections: [pokeProfile] });
     } else {
@@ -124,8 +126,12 @@ const PokemonProfile = ({ pokeProfile, party, setParty }) => {
           </MainDiv>
           <ButtonContainer>
             {party?.collections.length < 6 && (
-              <ChooseYouButton key={pokeProfile.name} onClick={handleClick}>
-                I choose you
+              <ChooseYouButton
+                key={pokeProfile.name}
+                onClick={handleClick}
+                disabled={partyLabel}
+              >
+                {partyLabel ? "Already Chosen" : "I choose you"}
               </ChooseYouButton>
             )}
           </ButtonContainer>
