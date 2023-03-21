@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { getPokemons } from "../utils/fetch";
+import CircleLoader from "react-spinners/CircleLoader";
 
 import {
   MainContainer,
@@ -13,17 +14,22 @@ import {
 } from "../utils/ComponentsStylesheet";
 import PokemonProfile from "../components/PokemonProfile";
 import PokemonCard from "../components/PokemonCard";
-import PartyOfSix from "../components/PokemonParty";
+import PartyOfSix from "../components/PartyOfSix";
 
 const Home = () => {
   const [pokemons, setPokemons] = useState();
   const [searchPokemon, setSearchPokemon] = useState("");
   const [pokeProfile, setPokeProfile] = useState();
   const [party, setParty] = useState({ collections: [] });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getPokemons().then((data) => {
       setPokemons(data);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
     });
   }, []);
 
@@ -42,39 +48,50 @@ const Home = () => {
   return (
     <>
       <MainContainer>
-        <LeftContentContainer>
-          <PokemonPartyContainer>
-            <PartyOfSix pokeProfile={pokeProfile} party={party} />
-          </PokemonPartyContainer>
-          <SearchContainer>
-            <SearchPokemonStyle
-              onChange={handleChange}
-              placeholder="Search Pokemon"
+        {isLoading ? (
+          <LoadingStyle>
+            <CircleLoader
+              color={"#dc0a2d"}
+              loading={isLoading}
+              size={100}
+              aria-label="Loading Spinner"
+              data-testid="loader"
             />
-          </SearchContainer>
-          <PokemonCardContainer>
-            {pokemons ? (
-              filtered.map((pokemon) => {
-                return (
-                  <PokemonCard
-                    pokemon={pokemon}
-                    key={pokemon.name}
-                    setPokeProfile={setPokeProfile}
-                  />
-                );
-              })
-            ) : (
-              <LoadingStyle>Loading...</LoadingStyle>
-            )}
-          </PokemonCardContainer>
-        </LeftContentContainer>
-        <RightContentContainer>
-          <PokemonProfile
-            pokeProfile={pokeProfile}
-            party={party}
-            setParty={setParty}
-          />
-        </RightContentContainer>
+          </LoadingStyle>
+        ) : (
+          <>
+            <LeftContentContainer>
+              <PokemonPartyContainer>
+                <PartyOfSix pokeProfile={pokeProfile} party={party} />
+              </PokemonPartyContainer>
+              <SearchContainer>
+                <SearchPokemonStyle
+                  onChange={handleChange}
+                  placeholder="Search Pokemon"
+                />
+              </SearchContainer>
+              <PokemonCardContainer>
+                {pokemons &&
+                  filtered.map((pokemon) => {
+                    return (
+                      <PokemonCard
+                        pokemon={pokemon}
+                        key={pokemon.name}
+                        setPokeProfile={setPokeProfile}
+                      />
+                    );
+                  })}
+              </PokemonCardContainer>
+            </LeftContentContainer>
+            <RightContentContainer>
+              <PokemonProfile
+                pokeProfile={pokeProfile}
+                party={party}
+                setParty={setParty}
+              />
+            </RightContentContainer>
+          </>
+        )}
       </MainContainer>
     </>
   );
