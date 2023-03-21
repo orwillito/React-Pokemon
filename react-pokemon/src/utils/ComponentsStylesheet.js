@@ -83,9 +83,11 @@ export const SearchPokemonStyle = styled.input`
 `;
 
 export const LoadingStyle = styled.div`
+  margin-top: 5rem;
   height: 50rem;
   width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 `;
 //pokemon-card
 export const PokemonCardContainer = styled.div`
