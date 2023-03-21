@@ -65,9 +65,7 @@ export const LeftContentContainer = styled.div`
   flex-wrap: wrap;
 `;
 //pokemon-party
-export const PokemonPartyContainer = styled.div`
-
-`;
+export const PokemonPartyContainer = styled.div``;
 //search
 export const SearchContainer = styled.div`
   max-width: 800px;
@@ -203,7 +201,7 @@ export const ChooseYouButton = styled.button`
   text-align: center;
   color: white;
   font-weight: 900;
-  background-color: ${props => props.disabled ? "gray" : "red"};
+  background-color: ${(props) => (props.disabled ? "gray" : "red")};
 `;
 
 export const TypeClassStyle = styled.div`
@@ -266,4 +264,11 @@ export const ProfileStandby = styled.div`
   width: 200px;
   border-radius: 100px;
   margin: auto;
+  background-color: red;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-weight: 900;
 `;

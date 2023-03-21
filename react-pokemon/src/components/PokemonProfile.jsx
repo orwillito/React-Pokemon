@@ -44,7 +44,9 @@ const PokemonProfile = ({ pokeProfile, party, setParty }) => {
   return (
     <PokemonProfileStyle>
       {!pokeProfile ? (
-        <ProfileStandby>Select Pokemon Card</ProfileStandby>
+        <ProfileStandby>
+          <p>Select Pokemon Card</p>
+        </ProfileStandby>
       ) : (
         <>
           <PokePicture>

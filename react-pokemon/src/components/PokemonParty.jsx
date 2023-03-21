@@ -10,6 +10,7 @@ const PokePartyBox = styled.div`
   width: 60%;
   gap: 15px;
   margin-top: 50px;
+  padding-right: 20px;
 `;
 
 const PokeParty = styled.div`
@@ -19,19 +20,40 @@ const PokeParty = styled.div`
   margin: 10px;
 `;
 
+const ChosenPokemon = styled.img`
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  stroke: 4px;
+  border: line;
+`;
+
 const PartyOfSix = ({ party }) => {
   console.log("result", party);
   const pokemonParty = party.collections;
 
   return (
     <>
-      {pokemonParty?.map((partyItem) => (
-        <PokeAvatar
-          src={partyItem.sprites.other.dream_world.front_default}
-          alt="Pokemon Image"
-        ></PokeAvatar>
-        // console.log("this is party item", partyItem);
-      ))}
+      {!PartyOfSix ? (
+        <PokePartyBox>
+          <PokeParty key={partyItem.name} />
+          <PokeParty key={partyItem.name} />
+          <PokeParty key={partyItem.name} />
+          <PokeParty key={partyItem.name} />
+          <PokeParty key={partyItem.name} />
+          <PokeParty key={partyItem.name} />
+        </PokePartyBox>
+      ) : (
+        <PokePartyBox>
+          {pokemonParty?.map((partyItem) => (
+            <ChosenPokemon
+              src={partyItem.sprites.other.dream_world.front_default}
+              alt="Pokemon Image"
+            ></ChosenPokemon>
+            // console.log("this is party item", partyItem);
+          ))}
+        </PokePartyBox>
+      )}
     </>
   );
 };
