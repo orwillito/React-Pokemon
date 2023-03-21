@@ -15,7 +15,7 @@ export const NavigationContainer = styled.div`
 export const LogoText = styled.h1`
   font-size: 36pt;
   font-weight: 500;
-  margin: 20px;
+  margin: 1.25rem;
 `;
 
 export const LogoContainer = styled.div`
@@ -83,11 +83,9 @@ export const SearchPokemonStyle = styled.input`
 `;
 
 export const LoadingStyle = styled.div`
-  margin-top: 5rem;
   height: 50rem;
   width: 100%;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 `;
 //pokemon-card
 export const PokemonCardContainer = styled.div`
