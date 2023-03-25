@@ -39,7 +39,7 @@ const PokemonProfile = ({ pokeProfile, party, setParty }) => {
       }));
     }
   };
-  console.log("party result", party.collections.length);
+  // console.log("party result", party.collections.length);
 
   return (
     <PokemonProfileStyle>

@@ -67,25 +67,28 @@ export const LeftContentContainer = styled.div`
 //pokemon-party
 export const PokemonPartyContainer = styled.div``;
 //search
-export const SearchContainer = styled.div`
-  max-width: 800px;
-  height: 200px;
-  margin-bottom: 3rem;
-  margin-top: 3rem;
+export const SearchContainerStyle = styled.div`
+  max-width: 60%;
+  height: auto;
+  margin-bottom: 5rem;
+  margin-top: 1rem;
 `;
 
 export const SearchPokemonStyle = styled.input`
   height: 50px;
-  width: 800px;
+  width: 900px;
   border-style: solid;
   border-radius: 20px;
-  padding-left: 1rem;
+  display: flex;
+  justify-content: center;
 `;
 
 export const LoadingStyle = styled.div`
+  margin-top: 10rem;
   height: 50rem;
   width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 `;
 //pokemon-card
 export const PokemonCardContainer = styled.div`
@@ -108,7 +111,8 @@ export const PokemonCardStyle = styled.div`
   padding-bottom: 2rem;
 `;
 
-export const RightContentContainer = styled.div`
+export const RightContentContainerStyle = styled.div`
+  margin-top: 3rem;
   width: 30%;
   margin-left: 3rem;
   display: flex;

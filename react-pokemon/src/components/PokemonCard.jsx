@@ -4,9 +4,16 @@ import {
   PokemonCardStyle,
   Avatar,
   TypeClassStyle,
-  LoadingStyle,
 } from "../utils/ComponentsStylesheet";
 import CircleLoader from "react-spinners/CircleLoader";
+import styled from "styled-components";
+
+const LoadingStyle = styled.div`
+  height: 50rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
 const PokemonCard = ({ pokemon, setPokeProfile }) => {
   const [pokemonInfos, setPokemonInfos] = useState();

@@ -5,8 +5,8 @@ import CircleLoader from "react-spinners/CircleLoader";
 import {
   MainContainer,
   LeftContentContainer,
-  RightContentContainer,
-  SearchContainer,
+  RightContentContainerStyle,
+  SearchContainerStyle,
   LoadingStyle,
   PokemonCardContainer,
   SearchPokemonStyle,
@@ -64,12 +64,12 @@ const Home = () => {
               <PokemonPartyContainer>
                 <PartyOfSix pokeProfile={pokeProfile} party={party} />
               </PokemonPartyContainer>
-              <SearchContainer>
+              <SearchContainerStyle>
                 <SearchPokemonStyle
                   onChange={handleChange}
                   placeholder="Search Pokemon"
                 />
-              </SearchContainer>
+              </SearchContainerStyle>
               <PokemonCardContainer>
                 {pokemons &&
                   filtered.map((pokemon) => {
@@ -83,13 +83,13 @@ const Home = () => {
                   })}
               </PokemonCardContainer>
             </LeftContentContainer>
-            <RightContentContainer>
+            <RightContentContainerStyle>
               <PokemonProfile
                 pokeProfile={pokeProfile}
                 party={party}
                 setParty={setParty}
               />
-            </RightContentContainer>
+            </RightContentContainerStyle>
           </>
         )}
       </MainContainer>

@@ -20,10 +20,10 @@ const Navigation = () => {
         </LogoContainer>
         <NavTabs>
           <NavLink to="/">
-            <NavLinkStyle>Home</NavLinkStyle>
+            <NavLinkStyle style={{ textDecoration: "none" }}>Home</NavLinkStyle>
           </NavLink>
           <NavLink to="/devs">
-            <NavLinkStyle>Devs</NavLinkStyle>
+            <NavLinkStyle style={{ textDecoration: "none" }}>Devs</NavLinkStyle>
           </NavLink>
         </NavTabs>
       </NavigationContainer>
