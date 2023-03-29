@@ -7,8 +7,8 @@ const PokePartyBox = styled.div`
   flex-direction: row;
   height: auto;
   width: 60rem;
-  justify-content: space-around;
-  gap: 0.2rem;
+  justify-content: space-evenly;
+  gap: 1rem;
 
   margin-top: 3rem;
   justify-content: start;
@@ -16,7 +16,7 @@ const PokePartyBox = styled.div`
 
 const PokeParty = styled.div`
   height: 10.7rem;
-  width: 9.5rem;
+  width: 8rem;
   background-color: lightgrey;
 `;
 

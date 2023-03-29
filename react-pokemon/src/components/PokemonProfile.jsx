@@ -45,7 +45,10 @@ const PokemonProfile = ({ pokeProfile, party, setParty }) => {
     <PokemonProfileStyle>
       {!pokeProfile ? (
         <ProfileStandby>
-          <p>Select Pokemon Card</p>
+          <p>
+            Select <br />
+            Pokemon Card
+          </p>
         </ProfileStandby>
       ) : (
         <>
