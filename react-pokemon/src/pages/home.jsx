@@ -62,7 +62,11 @@ const Home = () => {
           <>
             <LeftContentContainer>
               <PokemonPartyContainer>
-                <PartyOfSix pokeProfile={pokeProfile} party={party} />
+                <PartyOfSix
+                  pokeProfile={pokeProfile}
+                  party={party}
+                  setParty={setParty}
+                />
               </PokemonPartyContainer>
               <SearchContainerStyle>
                 <SearchPokemonStyle
