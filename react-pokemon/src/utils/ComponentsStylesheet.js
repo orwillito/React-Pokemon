@@ -73,7 +73,7 @@ export const MainContainer = styled.div`
   padding-right: 1rem;
 
   ${mediaQueries("laptop")`
-  background-color: blue;
+  background-color: lightgrey;
   `}
 
   ${mediaQueries("mobile")`
@@ -81,31 +81,39 @@ export const MainContainer = styled.div`
   `}
 `;
 
-export const LeftContentContainer = styled.div`
-  max-width: 60%;
-  display: flex;
-  flex-wrap: wrap;
-`;
 //pokemon-party
 export const PokemonPartyContainer = styled.div`
   display: flex;
   justify-content: space-around;
+  background-color: red;
 `;
+
+//
+
+export const LeftContentContainer = styled.div`
+  max-width: 60%;
+  background-color: blue;
+  margin: 2rem;
+
+  ${mediaQueries("laptop")`
+  justify-content: center;
+  `}
+`;
+
 //search
 export const SearchContainerStyle = styled.div`
-  max-width: 60%;
+  max-width: 52vw;
   height: auto;
-  margin-bottom: 5rem;
-  margin-top: 1rem;
+  background-color: darkgrey;
+  margin: 1rem 0 3rem 1rem;
 `;
 
 export const SearchPokemonStyle = styled.input`
   height: 3.125rem;
-  width: 55rem;
+  width: 100%;
   border-style: solid;
+  margin: auto;
   border-radius: 1.5rem;
-  display: flex;
-  justify-content: center;
   padding-left: 2rem;
 `;
 
@@ -117,22 +125,52 @@ export const LoadingStyle = styled.div`
   justify-content: center;
 `;
 //pokemon-card
+
+export const LeftSubContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  background-color: pink;
+`;
+
 export const PokemonCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   height: 50rem;
   width: 100%;
+  background-color: green;
+
+  ${mediaQueries("laptop")`
+
+  height: 10rem;
+  width: 10rem;
+  `}
+
+  ${mediaQueries("mobile")`
+  height: 6rem;
+  width: 6rem;
+  `}
 `;
 
 export const Avatar = styled.img`
   height: 13rem;
   width: 13rem;
   margin-top: -6.875rem;
+
+  ${mediaQueries("laptop")`
+  height: 10rem;
+  width: 10rem;
+  `}
+
+  ${mediaQueries("mobile")`
+  height: 6rem;
+  width: 6rem;
+  `}
 `;
 
 export const PokemonCardStyle = styled.div`
-  width: 16.25rem;
-  height: 18.75rem;
+  width: 16rem;
+  height: 16rem;
   background: #ffffff;
   box-shadow: 4px 4px 6px 4px rgba(0, 0, 0, 0.25);
   border-radius: 0.625rem;
@@ -143,24 +181,44 @@ export const PokemonCardStyle = styled.div`
   padding-bottom: 2rem;
 `;
 
+//pokemon-profile-component
+
+export const TopContainer = styled.div`
+  height: 13rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+`;
+
 export const RightContentContainerStyle = styled.div`
   margin-top: 3rem;
   width: 30%;
-  margin-left: 3rem;
+  margin-left: 0;
   display: flex;
   justify-content: center;
+  background-color: pink;
 `;
-//pokemon-profile-component
 
 export const PokemonProfileStyle = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 50vw;
+  height: 49vh;
   box-shadow: 4px 4px 6px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   stroke: #000000;
   padding-top: 3rem;
   position: sticky;
   top: 0;
+  background: #ffffff;
+  padding: 2rem;
+  margin: 0;
+
+  ${mediaQueries("laptop")`
+    margin: 4rem;
+  `}
+
+  ${mediaQueries("mobile")`
+  background-color: grey;
+  `}
 `;
 
 export const ProfileStandby = styled.div`
@@ -299,10 +357,4 @@ export const TypeClassStyle = styled.div`
       return `background-color: #B7B9D0`;
     }
   }};
-`;
-
-export const TopContainer = styled.div`
-  height: 13rem;
-  width: 100%;
-  padding: 2rem;
 `;

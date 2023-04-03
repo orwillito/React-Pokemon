@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { PokeAvatar } from "../utils/ComponentsStylesheet";
+import { mediaQueries } from "../utils/mediaQueries";
 
 const PokePartyBox = styled.div`
   display: flex;
@@ -9,23 +10,30 @@ const PokePartyBox = styled.div`
   width: 60rem;
   justify-content: space-evenly;
   gap: 1rem;
-
+  margin: 0;
   margin-top: 3rem;
   justify-content: start;
+
+  ${mediaQueries("laptop")`
+  flex-wrap: wrap;
+  `}
 `;
 
 const PokeParty = styled.div`
-  height: 10.7rem;
+  padding: 0.5rem;
+  height: 10rem;
   width: 8rem;
   background-color: lightgrey;
+  border-radius: 10px;
 `;
 
 const ChosenPokemon = styled.img`
-  padding: 5px;
+  padding: 0.5rem;
   height: 10rem;
   width: 8rem;
   object-fit: contain;
   background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 `;
 
 const PartyOfSix = ({ party }) => {
