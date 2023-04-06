@@ -11,6 +11,8 @@ import {
   PokemonCardContainer,
   SearchPokemonStyle,
   PokemonPartyContainer,
+  LeftSubContainer,
+  TopContainer
 } from "../utils/ComponentsStylesheet";
 import PokemonProfile from "../components/PokemonProfile";
 import PokemonCard from "../components/PokemonCard";
@@ -60,28 +62,32 @@ const Home = () => {
           </LoadingStyle>
         ) : (
           <>
+          <TopContainer>
+            <PokemonPartyContainer>
+              <PartyOfSix pokeProfile={pokeProfile} party={party} />
+            </PokemonPartyContainer>
+            </TopContainer>
             <LeftContentContainer>
-              <PokemonPartyContainer>
-                <PartyOfSix pokeProfile={pokeProfile} />
-              </PokemonPartyContainer>
               <SearchContainerStyle>
                 <SearchPokemonStyle
                   onChange={handleChange}
                   placeholder="Search Pokemon"
                 />
               </SearchContainerStyle>
-              <PokemonCardContainer>
-                {pokemons &&
-                  filtered.map((pokemon) => {
-                    return (
-                      <PokemonCard
-                        pokemon={pokemon}
-                        key={pokemon.name}
-                        setPokeProfile={setPokeProfile}
-                      />
-                    );
-                  })}
-              </PokemonCardContainer>
+              <LeftSubContainer>
+                <PokemonCardContainer>
+                  {pokemons &&
+                    filtered.map((pokemon) => {
+                      return (
+                        <PokemonCard
+                          pokemon={pokemon}
+                          key={pokemon.name}
+                          setPokeProfile={setPokeProfile}
+                        />
+                      );
+                    })}
+                </PokemonCardContainer>
+              </LeftSubContainer>    
             </LeftContentContainer>
             <RightContentContainerStyle>
               <PokemonProfile pokeProfile={pokeProfile} />
