@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { usePokemonParty } from "../context/PokemonContext";
 
 const PokePartyBox = styled.div`
   display: flex;
@@ -49,18 +50,20 @@ const ButtonClear = styled.button`
   font-size: 10px;
 `;
 
-const PartyOfSix = ({ party, setParty }) => {
-  const pokemonParty = party?.collections;
+const PartyOfSix = () => {
+  const { currentPokemon, setCurrentPokemon } = usePokemonParty();
+
+  const pokemonParty = currentPokemon?.collections;
   console.log("pokemon party =>", pokemonParty);
-  const emptyPokemonParty = 6 - party?.collections.length;
+  const emptyPokemonParty = 6 - currentPokemon?.collections.length;
 
   const HandleClick = (name) => {
     const update = pokemonParty.filter((pokemon) => pokemon.name !== name);
-    setParty({ collections: [...update] });
+    setCurrentPokemon({ collections: [...update] });
   };
 
   const HandleClickBtn = () => {
-    setParty({ collections: [] });
+    setCurrentPokemon({ collections: [] });
   };
 
   return (
