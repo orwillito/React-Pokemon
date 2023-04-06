@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+
+import { usePokemonParty } from "../context/PokemonContext";
 import { PokeAvatar } from "../utils/ComponentsStylesheet";
 import { mediaQueries } from "../utils/mediaQueries";
+
 
 const PokePartyBox = styled.div`
   display: flex;
@@ -36,15 +38,44 @@ const ChosenPokemon = styled.img`
   border-radius: 10px;
 `;
 
-const PartyOfSix = ({ party }) => {
-  // console.log("result", party);
-  const pokemonParty = party.collections; // array --> concat
-  const emptyPokemonParty = 6 - party.collections.length; // 6-0 = 6
-  // 1. partycount --> array --> length (there's an item)
-  // 2. render --> pokepartybox component --> chosen pokemon
+const DeletePoke = styled.div`
+  width: auto;
+  height: auto;
+  position: relative;
+  right: 1rem;
+  cursor: pointer;
+`;
 
-  // 1. partycount --> array --> length (there's an item)
-  // 2. render --> pokepartybox component --> pokeparty
+const ButtonClear = styled.button`
+  background-color: #f44336;
+  border: none;
+  color: white;
+  width: 6rem;
+  height: 2rem;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+  top: -2.5rem;
+  right: 6rem;
+  font-size: 10px;
+`;
+
+const PartyOfSix = () => {
+  const { currentPokemon, setCurrentPokemon } = usePokemonParty();
+
+  const pokemonParty = currentPokemon?.collections;
+  console.log("pokemon party =>", pokemonParty);
+  const emptyPokemonParty = 6 - currentPokemon?.collections.length;
+
+  const HandleClick = (name) => {
+    const update = pokemonParty.filter((pokemon) => pokemon.name !== name);
+    setCurrentPokemon({ collections: [...update] });
+  };
+
+  const HandleClickBtn = () => {
+    setCurrentPokemon({ collections: [] });
+  };
 
   return (
     <>
@@ -52,10 +83,17 @@ const PartyOfSix = ({ party }) => {
         {pokemonParty.length > 0 ? (
           pokemonParty
             ?.map((partyItem) => (
-              <ChosenPokemon
-                src={partyItem.sprites.other.dream_world.front_default}
-                alt="Pokemon Image"
-              ></ChosenPokemon>
+              <>
+                <ChosenPokemon
+                  key={partyItem.name}
+                  src={partyItem.sprites.other.dream_world.front_default}
+                  alt="Pokemon Image"
+                ></ChosenPokemon>
+
+                <DeletePoke onClick={() => HandleClick(partyItem.name)}>
+                  x
+                </DeletePoke>
+              </>
             ))
             .concat([...Array(emptyPokemonParty)].map((party) => <PokeParty />))
         ) : (
@@ -65,138 +103,12 @@ const PartyOfSix = ({ party }) => {
             ))}
           </>
         )}
+        {emptyPokemonParty <= 4 && (
+          <ButtonClear onClick={HandleClickBtn}>Clear Party</ButtonClear>
+        )}
       </PokePartyBox>
     </>
   );
 };
-
-/*
-  if (partyCount === 0) {
-    return (
-      <PokePartyBox>
-        <PokeParty />
-        <PokeParty />
-        <PokeParty />
-        <PokeParty />
-        <PokeParty />
-        <PokeParty />
-      </PokePartyBox>
-    );
-  } else if (partyCount === 1) {
-    return (
-      <>
-        <PokePartyBox>
-          {pokemonParty?.map((partyItem) => (
-            <ChosenPokemon
-              src={partyItem.sprites.other.dream_world.front_default}
-              alt="Pokemon Image"
-            ></ChosenPokemon>
-          ))}
-          <PokeParty />
-          <PokeParty />
-          <PokeParty />
-          <PokeParty />
-          <PokeParty />
-        </PokePartyBox>
-      </>
-    );
-  } else if (partyCount <= 2) {
-    return (
-      <>
-        <PokePartyBox>
-          {pokemonParty?.map((partyItem) => (
-            <ChosenPokemon
-              src={partyItem.sprites.other.dream_world.front_default}
-              alt="Pokemon Image"
-            ></ChosenPokemon>
-          ))}
-          <PokeParty />
-          <PokeParty />
-          <PokeParty />
-          <PokeParty />
-        </PokePartyBox>
-      </>
-    );
-  } else if (partyCount <= 3) {
-    return (
-      <>
-        <PokePartyBox>
-          {pokemonParty?.map((partyItem) => (
-            <ChosenPokemon
-              src={partyItem.sprites.other.dream_world.front_default}
-              alt="Pokemon Image"
-            ></ChosenPokemon>
-          ))}
-          <PokeParty />
-          <PokeParty />
-          <PokeParty />
-        </PokePartyBox>
-      </>
-    );
-  } else if (partyCount <= 4) {
-    return (
-      <>
-        <PokePartyBox>
-          {pokemonParty?.map((partyItem) => (
-            <ChosenPokemon
-              src={partyItem.sprites.other.dream_world.front_default}
-              alt="Pokemon Image"
-            ></ChosenPokemon>
-          ))}
-          <PokeParty />
-          <PokeParty />
-        </PokePartyBox>
-      </>
-    );
-  } else if (partyCount <= 5) {
-    return (
-      <>
-        <PokePartyBox>
-          {pokemonParty?.map((partyItem) => (
-            <ChosenPokemon
-              src={partyItem.sprites.other.dream_world.front_default}
-              alt="Pokemon Image"
-            ></ChosenPokemon>
-          ))}
-          <PokeParty />
-        </PokePartyBox>
-      </>
-    );
-  } else if (partyCount <= 6) {
-    return (
-      <>
-        <PokePartyBox>
-          {pokemonParty?.map((partyItem) => (
-            <ChosenPokemon
-              src={partyItem.sprites.other.dream_world.front_default}
-              alt="Pokemon Image"
-            ></ChosenPokemon>
-          ))}
-        </PokePartyBox>
-      </>
-    );
-  }
-  */
-
-// return (
-//   <>
-//     <PokePartyBox>
-//       <PokeParty />
-//       <PokeParty />
-//       <PokeParty />
-//       <PokeParty />
-//       <PokeParty />
-//       <PokeParty />
-
-//       {pokemonParty?.map((partyItem) => (
-//         <ChosenPokemon
-//           src={partyItem.sprites.other.dream_world.front_default}
-//           alt="Pokemon Image"
-//         ></ChosenPokemon>
-//       ))}
-//     </PokePartyBox>
-//   </>
-// );
-// };
 
 export default PartyOfSix;

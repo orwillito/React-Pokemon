@@ -22,7 +22,7 @@ const Home = () => {
   const [pokemons, setPokemons] = useState();
   const [searchPokemon, setSearchPokemon] = useState("");
   const [pokeProfile, setPokeProfile] = useState();
-  const [party, setParty] = useState({ collections: [] });
+  // const [party, setParty] = useState({ collections: [] });
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -90,11 +90,7 @@ const Home = () => {
               </LeftSubContainer>    
             </LeftContentContainer>
             <RightContentContainerStyle>
-              <PokemonProfile
-                pokeProfile={pokeProfile}
-                party={party}
-                setParty={setParty}
-              />
+              <PokemonProfile pokeProfile={pokeProfile} />
             </RightContentContainerStyle>
           </>
         )}
