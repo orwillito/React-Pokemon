@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { RouterProvider } from "react-router-dom";
+import React, { useMemo } from "react";
+// import { RouterProvider } from "react-router-dom";
 import {
   PokemonProfileStyle,
   PokePicture,
@@ -16,30 +16,37 @@ import {
   ButtonContainer,
   ProfileStandby,
 } from "../utils/ComponentsStylesheet";
+import { usePokemonParty } from "../context/PokemonContext";
 
-const PokemonProfile = ({ pokeProfile, party, setParty }) => {
+const PokemonProfile = ({ pokeProfile }) => {
+  const { currentPokemon, setCurrentPokemon } = usePokemonParty();
+
   const partyLabel = useMemo(() => {
     if (
-      (pokeProfile !== undefined && party !== undefined) ||
-      party.length > 1
+      (pokeProfile !== undefined && currentPokemon !== undefined) ||
+      currentPokemon.length > 1
     ) {
       // return party.collections.includes(pokeProfile.name);
-      return party.collections.some(
+      return currentPokemon.collections.some(
         (partyItem) => partyItem.name === pokeProfile.name
       );
     }
-  }, [party, pokeProfile]);
+  }, [currentPokemon, pokeProfile]);
 
   const handleClick = () => {
-    if (party === undefined || party.length === 0) {
-      setParty({ collections: [pokeProfile] });
+    if (currentPokemon === undefined || currentPokemon.length === 0) {
+      // setParty({ collections: [pokeProfile] });
+      setCurrentPokemon({ collections: [pokeProfile] });
     } else {
-      setParty((prevState) => ({
+      // setParty((prevState) => ({
+      //   collections: [...prevState.collections, pokeProfile],
+      // }));
+      setCurrentPokemon((prevState) => ({
         collections: [...prevState.collections, pokeProfile],
       }));
     }
   };
-  // console.log("party result", party.collections.length);
+  console.log("current pokemon", currentPokemon);
 
   return (
     <PokemonProfileStyle>
@@ -127,7 +134,7 @@ const PokemonProfile = ({ pokeProfile, party, setParty }) => {
             </RightColumn>
           </MainDiv>
           <ButtonContainer>
-            {party?.collections.length < 6 && (
+            {currentPokemon?.collections.length < 6 && (
               <ChooseYouButton
                 key={pokeProfile.name}
                 onClick={handleClick}
