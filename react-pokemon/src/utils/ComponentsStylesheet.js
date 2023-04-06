@@ -1,19 +1,28 @@
 import styled from "styled-components";
+import { mediaQueries } from "./mediaQueries";
 
 //navigation
 export const NavigationContainer = styled.div`
-  width: 100%;
-  height: 150px;
+  max-width: 100vw;
+  height: 9.375rem;
   margin: auto;
   padding: auto;
   display: flex;
   justify-content: space-evenly;
   background: #dc0a2d;
   align-items: center;
+
+  ${mediaQueries("laptop")`
+  background-color: blue;
+  `}
+
+  ${mediaQueries("mobile")`
+  background-color: grey;
+  `}
 `;
 
 export const LogoText = styled.h1`
-  font-size: 36pt;
+  font-size: 2rem;
   font-weight: 500;
   margin: 1.25rem;
 `;
@@ -24,7 +33,7 @@ export const LogoContainer = styled.div`
   justify-content: center;
   align-items: center;
   color: white;
-  gap: 30px;
+  gap: 2rem;
 `;
 
 export const NavLinkStyle = styled.h2`
@@ -36,10 +45,10 @@ export const NavLinkStyle = styled.h2`
 `;
 
 export const Logo = styled.img`
-  width: 50px;
-  height: 76px;
-  margin-left: 20px;
-  margin-right: 20px;
+  width: 3.125rem;
+  height: auto;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
 `;
 
 export const NavTabs = styled.div`
@@ -49,38 +58,63 @@ export const NavTabs = styled.div`
   align-content: center;
 `;
 
+//
+//
+//
+//
+//
 //home
 export const MainContainer = styled.div`
-  max-width: 1500px;
+  max-width: 100vw;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   padding-left: 1rem;
   padding-right: 1rem;
+
+  ${mediaQueries("laptop")`
+  background-color: lightgrey;
+  `}
+
+  ${mediaQueries("mobile")`
+  background-color: grey;
+  `}
 `;
+
+//pokemon-party
+export const PokemonPartyContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  background-color: red;
+`;
+
+//
 
 export const LeftContentContainer = styled.div`
   max-width: 60%;
-  display: flex;
-  flex-wrap: wrap;
+  background-color: blue;
+  margin: 2rem;
+
+  ${mediaQueries("laptop")`
+  justify-content: center;
+  `}
 `;
-//pokemon-party
-export const PokemonPartyContainer = styled.div``;
+
 //search
 export const SearchContainerStyle = styled.div`
-  max-width: 60%;
+  max-width: 52vw;
   height: auto;
-  margin-bottom: 5rem;
-  margin-top: 1rem;
+  background-color: darkgrey;
+  margin: 1rem 0 3rem 1rem;
 `;
 
 export const SearchPokemonStyle = styled.input`
-  height: 50px;
-  width: 900px;
+  height: 3.125rem;
+  width: 100%;
   border-style: solid;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
+  margin: auto;
+  border-radius: 1.5rem;
+  padding-left: 2rem;
 `;
 
 export const LoadingStyle = styled.div`
@@ -91,48 +125,116 @@ export const LoadingStyle = styled.div`
   justify-content: center;
 `;
 //pokemon-card
+
+export const LeftSubContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  background-color: pink;
+`;
+
 export const PokemonCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   height: 50rem;
   width: 100%;
+  background-color: green;
+
+  ${mediaQueries("laptop")`
+
+  height: 10rem;
+  width: 10rem;
+  `}
+
+  ${mediaQueries("mobile")`
+  height: 6rem;
+  width: 6rem;
+  `}
+`;
+
+export const Avatar = styled.img`
+  height: 13rem;
+  width: 13rem;
+  margin-top: -6.875rem;
+
+  ${mediaQueries("laptop")`
+  height: 10rem;
+  width: 10rem;
+  `}
+
+  ${mediaQueries("mobile")`
+  height: 6rem;
+  width: 6rem;
+  `}
 `;
 
 export const PokemonCardStyle = styled.div`
-  width: 260px;
-  height: 300px;
+  width: 16rem;
+  height: 16rem;
   background: #ffffff;
   box-shadow: 4px 4px 6px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  margin: 80px 20px;
+  border-radius: 0.625rem;
+  margin: 5rem 1.25rem;
   align-items: center;
   display: flex;
   flex-direction: column;
   padding-bottom: 2rem;
 `;
 
+//pokemon-profile-component
+
+export const TopContainer = styled.div`
+  height: 13rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+`;
+
 export const RightContentContainerStyle = styled.div`
   margin-top: 3rem;
   width: 30%;
-  margin-left: 3rem;
+  margin-left: 0;
   display: flex;
   justify-content: center;
-`;
-//pokemon-profile-component
-export const Avatar = styled.img`
-  height: 200px;
-  width: 200px;
-  margin-top: -110px;
+  background-color: pink;
 `;
 
 export const PokemonProfileStyle = styled.div`
-  width: 100%;
-  height: 1000px;
-  background: #ffffff;
+  width: 50vw;
+  height: 49vh;
   box-shadow: 4px 4px 6px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   stroke: #000000;
   padding-top: 3rem;
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  padding: 2rem;
+  margin: 0;
+
+  ${mediaQueries("laptop")`
+    margin: 4rem;
+  `}
+
+  ${mediaQueries("mobile")`
+  background-color: grey;
+  `}
+`;
+
+export const ProfileStandby = styled.div`
+  height: 10rem;
+  width: 10rem;
+  border-radius: 100px;
+  margin: auto;
+  background-color: red;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-weight: 900;
+  font-size: 10pt;
+  line-height: 2;
 `;
 
 export const PokePicture = styled.div`
@@ -198,8 +300,8 @@ export const ButtonContainer = styled.div`
 `;
 
 export const ChooseYouButton = styled.button`
-  height: 50px;
-  width: 250px;
+  height: 3rem;
+  width: 16rem;
   border-radius: 40px;
   margin-top: 2rem;
   text-align: center;
@@ -209,8 +311,8 @@ export const ChooseYouButton = styled.button`
 `;
 
 export const TypeClassStyle = styled.div`
-  height: 40px;
-  width: 100px;
+  height: 2.5rem;
+  width: 6rem;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
@@ -255,24 +357,4 @@ export const TypeClassStyle = styled.div`
       return `background-color: #B7B9D0`;
     }
   }};
-`;
-
-export const TopContainer = styled.div`
-  height: 200px;
-  width: 100%;
-  padding: 2rem;
-`;
-
-export const ProfileStandby = styled.div`
-  height: 200px;
-  width: 200px;
-  border-radius: 100px;
-  margin: auto;
-  background-color: red;
-  text-align: center;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  color: white;
-  font-weight: 900;
 `;

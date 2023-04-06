@@ -1,30 +1,41 @@
 import styled from "styled-components";
+
 import { usePokemonParty } from "../context/PokemonContext";
+import { PokeAvatar } from "../utils/ComponentsStylesheet";
+import { mediaQueries } from "../utils/mediaQueries";
+
 
 const PokePartyBox = styled.div`
   display: flex;
   flex-direction: row;
   height: auto;
   width: 60rem;
-  justify-content: space-around;
-  gap: 0.2rem;
-
+  justify-content: space-evenly;
+  gap: 1rem;
+  margin: 0;
   margin-top: 3rem;
   justify-content: start;
+
+  ${mediaQueries("laptop")`
+  flex-wrap: wrap;
+  `}
 `;
 
 const PokeParty = styled.div`
-  height: 10.7rem;
-  width: 9.5rem;
+  padding: 0.5rem;
+  height: 10rem;
+  width: 8rem;
   background-color: lightgrey;
+  border-radius: 10px;
 `;
 
 const ChosenPokemon = styled.img`
-  padding: 5px;
+  padding: 0.5rem;
   height: 10rem;
   width: 8rem;
   object-fit: contain;
   background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 `;
 
 const DeletePoke = styled.div`
