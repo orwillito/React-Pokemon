@@ -25,6 +25,16 @@ export const LogoText = styled.h1`
   font-size: 2rem;
   font-weight: 500;
   margin: 1.25rem;
+
+  ${mediaQueries("laptop")`
+   font-size: 1.5rem;
+   font-weight: 400;
+  `}
+
+  ${mediaQueries("mobile")`
+  font-size: 1rem;
+    font-weight 300;
+  `}
 `;
 
 export const LogoContainer = styled.div`
@@ -73,7 +83,7 @@ export const MainContainer = styled.div`
   padding-right: 1rem;
 
   ${mediaQueries("laptop")`
-  background-color: lightgrey;
+
   `}
 
   ${mediaQueries("mobile")`
@@ -84,15 +94,36 @@ export const MainContainer = styled.div`
 //pokemon-party
 export const PokemonPartyContainer = styled.div`
   display: flex;
-  justify-content: space-around;
-  background-color: red;
+  margin-left: 5rem;
+  width: auto;
+  justify-content: center;
+
+  ${mediaQueries("laptop")`
+   background-color: red;
+   max-width: 100%;
+   justify-content: center;
+   
+  `}
+
+  ${mediaQueries("mobile")`
+  font-size: 1rem;
+    font-weight 300;
+  `}
 `;
 
 //
 
+export const TopContainer = styled.div`
+  height: 13rem;
+  width: 60vw;
+  display: flex;
+  margin: 1rem 3rem 3rem 1rem;
+  justify-content: center;
+`;
+
+//
 export const LeftContentContainer = styled.div`
   max-width: 60%;
-  background-color: blue;
   margin: 2rem;
 
   ${mediaQueries("laptop")`
@@ -102,10 +133,20 @@ export const LeftContentContainer = styled.div`
 
 //search
 export const SearchContainerStyle = styled.div`
-  max-width: 52vw;
+  max-width: auto;
   height: auto;
-  background-color: darkgrey;
-  margin: 1rem 0 3rem 1rem;
+  margin: 1rem 3rem 3rem 1rem;
+  justify-content: center;
+
+  ${mediaQueries("laptop")`
+   font-size: 1.5rem;
+   font-weight: 400;
+  `}
+
+  ${mediaQueries("mobile")`
+  font-size: 1rem;
+    font-weight 300;
+  `}
 `;
 
 export const SearchPokemonStyle = styled.input`
@@ -130,20 +171,21 @@ export const LeftSubContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   max-width: 100%;
-  background-color: pink;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const PokemonCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  height: 50rem;
+  height: 61vh;
   width: 100%;
-  background-color: green;
+  justify-content: center;
+  margin-top: 2rem;
 
   ${mediaQueries("laptop")`
-
-  height: 10rem;
-  width: 10rem;
   `}
 
   ${mediaQueries("mobile")`
@@ -156,6 +198,7 @@ export const Avatar = styled.img`
   height: 13rem;
   width: 13rem;
   margin-top: -6.875rem;
+  z-index: 2;
 
   ${mediaQueries("laptop")`
   height: 10rem;
@@ -179,16 +222,37 @@ export const PokemonCardStyle = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 2rem;
+  justify-content: center;
+  transition: background-color 0.4s ease-in-out, transform 0.2s ease-in-out;
+
+  &:hover {
+    background-color: lightgrey;
+    transform: scale(1.125);
+  }
+
+  ${mediaQueries("laptop")`
+  height: 12rem;
+  width: 10rem;
+  `}
+`;
+
+export const PokemonCardNumber = styled.h3`
+  font-size: 1.2rem;
+
+  ${mediaQueries("laptop")`
+  font-size: 1rem;
+  `}
+`;
+
+export const PokemonCardName = styled.h2`
+  font-size: 1.3rem;
+`;
+
+export const PokemonCardType = styled.h4`
+  font-size: 1rem;
 `;
 
 //pokemon-profile-component
-
-export const TopContainer = styled.div`
-  height: 13rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-`;
 
 export const RightContentContainerStyle = styled.div`
   margin-top: 3rem;
@@ -196,7 +260,8 @@ export const RightContentContainerStyle = styled.div`
   margin-left: 0;
   display: flex;
   justify-content: center;
-  background-color: pink;
+  z-index: 1;
+  margin-top: -14rem;
 `;
 
 export const PokemonProfileStyle = styled.div`
@@ -357,4 +422,39 @@ export const TypeClassStyle = styled.div`
       return `background-color: #B7B9D0`;
     }
   }};
+`;
+
+export const FooterContainer = styled.div`
+  height: 9.375rem;
+  width: 100vw;
+  margin: auto;
+  background: #dc0a2d;
+  z-index: 10;
+  position: absolute;
+  bottom: 0;
+  align-items: center;
+  padding: 1rem;
+`;
+
+export const FooterLogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  padding: auto;
+  justify-content: space-evenly;
+  background: #dc0a2d;
+  align-items: center;
+  gap: 40rem;
+`;
+
+export const DeveloperNames = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+`;
+
+export const FooterDevNames = styled.h3`
+  font-size: 2rem;
 `;

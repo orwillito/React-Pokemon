@@ -1,7 +1,7 @@
 const breakpoints = {
   mobile: 640,
-  laptop: 1007,
-  desktop: 1008,
+  laptop: 1513,
+  desktop: 1980,
 };
 
 export const mediaQueries = (key) => {
