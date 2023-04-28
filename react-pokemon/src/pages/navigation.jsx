@@ -22,9 +22,9 @@ const Navigation = () => {
           <NavLink to="/">
             <NavLinkStyle style={{ textDecoration: "none" }}>Home</NavLinkStyle>
           </NavLink>
-          <NavLink to="/devs">
+          {/* <NavLink to="/devs">
             <NavLinkStyle style={{ textDecoration: "none" }}>Devs</NavLinkStyle>
-          </NavLink>
+          </NavLink> */}
         </NavTabs>
       </NavigationContainer>
       <Outlet />
