@@ -39,12 +39,12 @@ const ChosenPokemon = styled.img`
 `;
 
 const DeletePoke = styled.div`
-  width: auto;
-  height: auto;
+  width: 10rem;
+  height: 10rem;
   position: relative;
-  right: 1rem;
-  cursor: pointer;
-  z-index: 2;
+  right: 10rem;
+  
+  z-index: 3;
   font-size: 3rem;
   background-color: grey;
 `;

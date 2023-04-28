@@ -13,11 +13,11 @@ export const NavigationContainer = styled.div`
   align-items: center;
 
   ${mediaQueries("laptop")`
-  background-color: blue;
+  
   `}
 
   ${mediaQueries("mobile")`
-  background-color: grey;
+  
   `}
 `;
 
@@ -87,7 +87,7 @@ export const MainContainer = styled.div`
   `}
 
   ${mediaQueries("mobile")`
-  background-color: grey;
+  
   `}
 `;
 
@@ -99,7 +99,7 @@ export const PokemonPartyContainer = styled.div`
   justify-content: center;
 
   ${mediaQueries("laptop")`
-   background-color: red;
+   
    max-width: 100%;
    justify-content: center;
    
@@ -282,7 +282,7 @@ export const PokemonProfileStyle = styled.div`
   `}
 
   ${mediaQueries("mobile")`
-  background-color: grey;
+  
   `}
 `;
 
