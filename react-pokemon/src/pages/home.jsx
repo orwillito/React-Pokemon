@@ -17,12 +17,13 @@ import {
 import PokemonProfile from "../components/PokemonProfile";
 import PokemonCard from "../components/PokemonCard";
 import PartyOfSix from "../components/PartyOfSix";
+import  Footer  from "../components/footer";
 
 const Home = () => {
   const [pokemons, setPokemons] = useState();
   const [searchPokemon, setSearchPokemon] = useState("");
   const [pokeProfile, setPokeProfile] = useState();
-  // const [party, setParty] = useState({ collections: [] });
+  const [party, setParty] = useState({ collections: [] });
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -90,11 +91,16 @@ const Home = () => {
               </LeftSubContainer>    
             </LeftContentContainer>
             <RightContentContainerStyle>
-              <PokemonProfile pokeProfile={pokeProfile} />
+              <PokemonProfile
+                pokeProfile={pokeProfile}
+                party={party}
+                setParty={setParty}
+              />
             </RightContentContainerStyle>
           </>
         )}
       </MainContainer>
+      <Footer />
     </>
   );
 };
