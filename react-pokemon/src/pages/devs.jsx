@@ -1,11 +1,12 @@
-import React from "react";
+// import React from "react";
 
-const Devs = () => {
-  return (
-    <>
-      <h1>Devs Page</h1>
-    </>
-  )
-}
+// const Devs = () => {
+//   return (
+//     <>
+//       <h1>Devs Page</h1>
+//     </>
+//   )
+// }
 
-export default Devs;
+
+// export default Devs;
