@@ -84,7 +84,8 @@ export const MainContainer = styled.div`
   `}
 
   ${mediaQueries("mobile")`
-  
+    padding: 0;
+    margin: 0;
   `}
 `;
 
@@ -103,7 +104,9 @@ export const PokemonPartyContainer = styled.div`
   `}
 
   ${mediaQueries("mobile")`
-  font-size: 1rem;
+    width: 100%;
+    margin: 0;
+    font-size: 1rem;
     font-weight 300;
   `}
 `;
@@ -117,15 +120,30 @@ export const TopContainer = styled.div`
   margin: 1rem 3rem 1rem 1rem;
   justify-content: center;
   overflow: hidden;
+
+  ${mediaQueries("mobile")`
+    height: auto;
+    margin: 0;
+    width: 100%;
+    font-size: 1rem;
+    font-weight 300;
+  `}
 `;
 
 //
 export const LeftContentContainer = styled.div`
-  max-width: 60%;
+  width: 60%;
   margin: 2rem;
 
   ${mediaQueries("laptop")`
   justify-content: center;
+  `}
+
+  ${mediaQueries("mobile")`
+    order: 2;
+    width: 100%;
+    font-size: 1rem;
+    font-weight 300;
   `}
 `;
 
@@ -141,7 +159,7 @@ export const SearchContainerStyle = styled.div`
   `}
 
   ${mediaQueries("mobile")`
-  font-size: 1rem;
+    font-size: 1rem;
     font-weight 300;
   `}
 `;
@@ -153,6 +171,12 @@ export const SearchPokemonStyle = styled.input`
   margin: 1rem auto 1rem;
   border-radius: 1.5rem;
   padding-left: 2rem;
+
+  ${mediaQueries("mobile")`
+    width: 100%;
+    font-size: 1rem;
+    font-weight 300;
+  `}
 `;
 
 export const LoadingStyle = styled.div`
@@ -172,6 +196,12 @@ export const LeftSubContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+
+  ${mediaQueries("mobile")`
+  
+  font-size: 1rem;
+  font-weight 300;
+`}
 `;
 
 export const PokemonCardContainer = styled.div`
@@ -187,9 +217,10 @@ export const PokemonCardContainer = styled.div`
   `}
 
   ${mediaQueries("mobile")`
-  height: 6rem;
-  width: 6rem;
+  height: auto;
+  width: 100%;
   `}
+  
 `;
 
 export const Avatar = styled.img`
@@ -204,8 +235,9 @@ export const Avatar = styled.img`
   `}
 
   ${mediaQueries("mobile")`
-  height: 6rem;
-  width: 6rem;
+    margin-top: -5rem
+    height: 6rem;
+    width: 6rem;
   `}
 `;
 
@@ -231,6 +263,14 @@ export const PokemonCardStyle = styled.div`
   ${mediaQueries("laptop")`
   height: 12rem;
   width: 10rem;
+  `}
+
+  ${mediaQueries("mobile")`
+    padding: 1rem 0;
+    height: auto;
+    width: 140px;
+    font-size: 14px;
+    font-weight 300;
   `}
 `;
 
@@ -259,6 +299,15 @@ export const RightContentContainerStyle = styled.div`
   justify-content: center;
   z-index: 1;
   margin-top: -18rem;
+
+  ${mediaQueries("mobile")`
+    margin: 0;
+    padding: 0;
+    order: 1;
+    width: 100%;
+    font-size: 1rem;
+    font-weight 300;
+`}
 `;
 
 export const PokemonProfileStyle = styled.div`
@@ -280,7 +329,12 @@ export const PokemonProfileStyle = styled.div`
   `}
 
   ${mediaQueries("mobile")`
-  
+    height: auto;
+    width: unset;
+    width: 80%;
+    margin: 0;
+    margin-top: 2rem;
+    padding: 1rem;
   `}
 `;
 
@@ -316,11 +370,25 @@ export const PokePicture = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${mediaQueries("mobile")`
+    height: 90px;
+    width: 90px;
+    font-size: 1rem;
+    font-weight 300;
+`}
 `;
 
 export const PokeAvatar = styled.img`
   height: 15rem;
   width: 15rem;
+
+  ${mediaQueries("mobile")`
+    height: 90px;
+    width: 90px;
+    font-size: 1rem;
+    font-weight 300;
+  `}
 `;
 
 export const NameDiv = styled.div`
