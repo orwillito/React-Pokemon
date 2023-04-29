@@ -27,6 +27,7 @@ const PokeParty = styled.div`
   width: 8rem;
   background-color: lightgrey;
   border-radius: 10px;
+  z-index: 1;
 `;
 
 const ChosenPokemon = styled.img`
@@ -36,17 +37,25 @@ const ChosenPokemon = styled.img`
   object-fit: contain;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  z-index: -2;
+  
 `;
 
 const DeletePoke = styled.div`
-  width: 10rem;
-  height: 10rem;
-  position: relative;
-  right: 10rem;
-  
   z-index: 3;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  right: 9rem;
+  bottom: -0.5rem;
   font-size: 3rem;
-  background-color: grey;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  margin-right: -2.1rem;
+  cursor: pointer;
 `;
 
 const ButtonClear = styled.button`
@@ -80,10 +89,10 @@ const PartyOfSix = () => {
     setCurrentPokemon({ collections: [] });
   };
 
-  const [ isHovered, setIsHovered ] = useState(false);
+  // const [ isHovered, setIsHovered ] = useState(false);
   
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseOut = () => setIsHovered(false);
+  // const handleMouseEnter = () => setIsHovered(true);
+  // const handleMouseOut = () => setIsHovered(false);
   
   // function useHover() {
   //   const ref = useRef(null);
@@ -113,14 +122,14 @@ const PartyOfSix = () => {
               <>
                 <ChosenPokemon
                   key={partyItem.name}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseOut}
+                  // onMouseEnter={handleMouseEnter}
+                  // onMouseLeave={handleMouseOut}
                   src={partyItem.sprites.other.dream_world.front_default}
                   alt="Pokemon Image"
                   ></ChosenPokemon>
-                  {isHovered && 
+                  {
                    (<DeletePoke onClick={() => HandleClick(partyItem.name) }>
-                "X"
+                X
                 </DeletePoke>)}
                 
               </>
