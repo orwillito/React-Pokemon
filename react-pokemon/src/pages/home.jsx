@@ -12,12 +12,12 @@ import {
   SearchPokemonStyle,
   PokemonPartyContainer,
   LeftSubContainer,
-  TopContainer
+  TopContainer,
 } from "../utils/ComponentsStylesheet";
 import PokemonProfile from "../components/PokemonProfile";
 import PokemonCard from "../components/PokemonCard";
 import PartyOfSix from "../components/PartyOfSix";
-import  Footer  from "../components/footer";
+import Footer from "../components/footer";
 
 const Home = () => {
   const [pokemons, setPokemons] = useState();
@@ -63,10 +63,10 @@ const Home = () => {
           </LoadingStyle>
         ) : (
           <>
-          <TopContainer>
-            <PokemonPartyContainer>
-              <PartyOfSix pokeProfile={pokeProfile} party={party} />
-            </PokemonPartyContainer>
+            <TopContainer>
+              <PokemonPartyContainer>
+                <PartyOfSix pokeProfile={pokeProfile} party={party} />
+              </PokemonPartyContainer>
             </TopContainer>
             <LeftContentContainer>
               <SearchContainerStyle>
@@ -88,7 +88,7 @@ const Home = () => {
                       );
                     })}
                 </PokemonCardContainer>
-              </LeftSubContainer>    
+              </LeftSubContainer>
             </LeftContentContainer>
             <RightContentContainerStyle>
               <PokemonProfile
