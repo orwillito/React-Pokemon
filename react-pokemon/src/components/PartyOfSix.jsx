@@ -4,7 +4,6 @@ import { usePokemonParty } from "../context/PokemonContext";
 // import { PokeAvatar } from "../utils/ComponentsStylesheet";
 import { mediaQueries } from "../utils/mediaQueries";
 
-
 const PokePartyBox = styled.div`
   display: flex;
   flex-direction: row;
@@ -19,6 +18,13 @@ const PokePartyBox = styled.div`
   ${mediaQueries("laptop")`
   flex-wrap: wrap;
   `}
+
+  ${mediaQueries("mobile")`
+    width: 100%;
+    font-size: 1rem;
+    font-weight 300;
+    justify-content: center;
+  `}
 `;
 
 const PokeParty = styled.div`
@@ -28,6 +34,12 @@ const PokeParty = styled.div`
   background-color: lightgrey;
   border-radius: 10px;
   z-index: 1;
+  ${mediaQueries("mobile")`
+    width: 90px;
+    height: 90px;
+    font-size: 1rem;
+    font-weight 300;
+  `}
 `;
 
 const ChosenPokemon = styled.img`
@@ -38,7 +50,13 @@ const ChosenPokemon = styled.img`
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   z-index: -2;
-  
+
+  ${mediaQueries("mobile")`
+    height: 90px;
+    width: 90px;
+    font-size: 1rem;
+    font-weight 300;
+  `}
 `;
 
 const DeletePoke = styled.div`
@@ -56,6 +74,14 @@ const DeletePoke = styled.div`
   font-size: 1rem;
   margin-right: -2.1rem;
   cursor: pointer;
+
+  ${mediaQueries("mobile")`
+    top: 8px;
+    right: 2.5rem;
+    width: 25px;
+    font-size: 1rem;
+    font-weight 300;
+  `}
 `;
 
 const ButtonClear = styled.button`
@@ -90,10 +116,10 @@ const PartyOfSix = () => {
   };
 
   // const [ isHovered, setIsHovered ] = useState(false);
-  
+
   // const handleMouseEnter = () => setIsHovered(true);
   // const handleMouseOut = () => setIsHovered(false);
-  
+
   // function useHover() {
   //   const ref = useRef(null);
   //   useEffect(
@@ -112,7 +138,7 @@ const PartyOfSix = () => {
   //   );
   //   return [ref, value];
   // }
-  
+
   return (
     <>
       <PokePartyBox>
@@ -126,12 +152,12 @@ const PartyOfSix = () => {
                   // onMouseLeave={handleMouseOut}
                   src={partyItem.sprites.other.dream_world.front_default}
                   alt="Pokemon Image"
-                  ></ChosenPokemon>
-                  {
-                   (<DeletePoke onClick={() => HandleClick(partyItem.name) }>
-                X
-                </DeletePoke>)}
-                
+                ></ChosenPokemon>
+                {
+                  <DeletePoke onClick={() => HandleClick(partyItem.name)}>
+                    X
+                  </DeletePoke>
+                }
               </>
             ))
             .concat([...Array(emptyPokemonParty)].map((party) => <PokeParty />))
