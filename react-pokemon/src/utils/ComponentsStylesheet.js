@@ -4,7 +4,7 @@ import { mediaQueries } from "./mediaQueries";
 //navigation
 export const NavigationContainer = styled.div`
   max-width: 100vw;
-  height: 9.375rem;
+  height: 6rem;
   margin: auto;
   padding: auto;
   display: flex;
@@ -68,19 +68,16 @@ export const NavTabs = styled.div`
   align-content: center;
 `;
 
-//
-//
-//
-//
-//
+
 //home
 export const MainContainer = styled.div`
-  max-width: 100vw;
-  margin: auto;
+  min-height: 85rem;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-top: 1rem;
 
   ${mediaQueries("laptop")`
 
@@ -114,11 +111,12 @@ export const PokemonPartyContainer = styled.div`
 //
 
 export const TopContainer = styled.div`
-  height: 13rem;
-  width: 60vw;
+  height: 250px;
+  width: 60%;
   display: flex;
-  margin: 1rem 3rem 3rem 1rem;
+  margin: 1rem 3rem 1rem 1rem;
   justify-content: center;
+  overflow: hidden;
 `;
 
 //
@@ -133,9 +131,8 @@ export const LeftContentContainer = styled.div`
 
 //search
 export const SearchContainerStyle = styled.div`
-  max-width: auto;
-  height: auto;
-  margin: 1rem 3rem 3rem 1rem;
+  width: 100%;
+  display: flex;
   justify-content: center;
 
   ${mediaQueries("laptop")`
@@ -151,9 +148,9 @@ export const SearchContainerStyle = styled.div`
 
 export const SearchPokemonStyle = styled.input`
   height: 3.125rem;
-  width: 100%;
+  width: 50rem;
   border-style: solid;
-  margin: auto;
+  margin: 1rem auto 1rem;
   border-radius: 1.5rem;
   padding-left: 2rem;
 `;
@@ -170,7 +167,7 @@ export const LoadingStyle = styled.div`
 export const LeftSubContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  max-width: 100%;
+  width: 100%;
   overflow: auto;
   &::-webkit-scrollbar {
     display: none;
@@ -178,9 +175,10 @@ export const LeftSubContainer = styled.div`
 `;
 
 export const PokemonCardContainer = styled.div`
+  padding-top: 3rem;
   display: flex;
   flex-wrap: wrap;
-  height: 61vh;
+  height: 900px;
   width: 100%;
   justify-content: center;
   margin-top: 2rem;
@@ -255,18 +253,18 @@ export const PokemonCardType = styled.h4`
 //pokemon-profile-component
 
 export const RightContentContainerStyle = styled.div`
-  margin-top: 3rem;
   width: 30%;
   margin-left: 0;
   display: flex;
   justify-content: center;
   z-index: 1;
-  margin-top: -14rem;
+  margin-top: -18rem;
 `;
 
 export const PokemonProfileStyle = styled.div`
   width: 50vw;
-  height: 49vh;
+  min-height: 50vh;
+  height: 810px;
   box-shadow: 4px 4px 6px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   stroke: #000000;
@@ -275,7 +273,7 @@ export const PokemonProfileStyle = styled.div`
   top: 0;
   background: #ffffff;
   padding: 2rem;
-  margin: 0;
+  margin-top: 1rem;
 
   ${mediaQueries("laptop")`
     margin: 4rem;
@@ -302,13 +300,18 @@ export const ProfileStandby = styled.div`
   line-height: 2;
 `;
 
+export const PokeProfileStyle = styled.div`
+  border-radius: 100px;
+  height: auto;
+`;
+
 export const PokePicture = styled.div`
   border-style: solid;
   border-color: black;
   border-radius: 10px;
   margin: auto;
-  width: 22rem;
-  height: 22rem;
+  width: 17rem;
+  height: 17rem;
   background: rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
@@ -316,8 +319,8 @@ export const PokePicture = styled.div`
 `;
 
 export const PokeAvatar = styled.img`
-  height: 20rem;
-  width: 20rem;
+  height: 15rem;
+  width: 15rem;
 `;
 
 export const NameDiv = styled.div`
@@ -325,7 +328,7 @@ export const NameDiv = styled.div`
   height: auto;
   justify-content: center;
   text-align: center;
-  `;
+`;
 
 export const MainDiv = styled.div`
   display: flex;
@@ -345,7 +348,7 @@ export const RightColumn = styled.div`
 `;
 
 export const PokemonStatsContainer = styled.div`
-  height: 50px;
+  height: 40px;
   width: auto;
   margin: auto;
   flex-direction: column;
@@ -376,11 +379,11 @@ export const ChooseYouButton = styled.button`
 `;
 
 export const TypeClassStyle = styled.div`
-  height: 2.5rem;
+  height: 2.2rem;
   width: 6rem;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   margin: auto;
   ${(props) => {
@@ -425,12 +428,13 @@ export const TypeClassStyle = styled.div`
 `;
 
 export const FooterContainer = styled.div`
-  height: 9.375rem;
-  width: 100vw;
-  margin: auto;
+  margin-top: 1rem;
+  height: 1.7rem;
+  width: 100%;
+  overflow: hidden;
   background: #dc0a2d;
   z-index: 10;
-  position: absolute;
+  left: 0;
   bottom: 0;
   align-items: center;
   padding: 1rem;
