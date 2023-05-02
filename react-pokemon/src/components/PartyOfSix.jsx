@@ -1,8 +1,6 @@
-// import React, { useState } from "react";
 import styled from "styled-components";
-import { usePokemonParty } from "../context/PokemonContext";
-// import { PokeAvatar } from "../utils/ComponentsStylesheet";
 import { mediaQueries } from "../utils/mediaQueries";
+import { usePokemonParty } from "../context/PokemonContext";
 
 const PokePartyBox = styled.div`
   display: flex;

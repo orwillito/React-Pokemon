@@ -1,23 +1,144 @@
 import React, { useMemo } from "react";
-// import { RouterProvider } from "react-router-dom";
-import {
-  PokemonProfileStyle,
-  PokePicture,
-  PokeAvatar,
-  ChooseYouButton,
-  LeftColumn,
-  RightColumn,
-  PokeProfileTerm,
-  PokeProfileValue,
-  PokemonStatsContainer,
-  MainDiv,
-  NameDiv,
-  TypeClassStyle,
-  ButtonContainer,
-  ProfileStandby,
-  PokeProfileStyle,
-} from "../utils/ComponentsStylesheet";
 import { usePokemonParty } from "../context/PokemonContext";
+import styled from "styled-components";
+import { mediaQueries } from "../utils/mediaQueries";
+import { TypeClassStyle } from "./PokemonCard";
+
+const PokemonProfileStyle = styled.div`
+  width: 50vw;
+  min-height: 50vh;
+  height: 810px;
+  box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  stroke: #000000;
+  padding-top: 3rem;
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  padding: 2rem;
+  margin-top: 1rem;
+
+  ${mediaQueries("laptop")`
+    margin: 4rem;
+  `}
+
+  ${mediaQueries("mobile")`
+    height: auto;
+    width: unset;
+    width: 80%;
+    margin: 0;
+    margin-top: 2rem;
+    padding: 1rem;
+  `}
+`;
+
+const ProfileStandby = styled.div`
+  height: 10rem;
+  width: 10rem;
+  border-radius: 100px;
+  margin: auto;
+  background-color: red;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-weight: 900;
+  font-size: 10pt;
+  line-height: 2;
+`;
+
+const PokeProfileStyle = styled.div`
+  border-radius: 100px;
+  height: auto;
+`;
+
+const PokePicture = styled.div`
+  border-style: solid;
+  border-color: black;
+  border-radius: 10px;
+  margin: auto;
+  width: 17rem;
+  height: 17rem;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ${mediaQueries("mobile")`
+    height: 90px;
+    width: 90px;
+    font-size: 1rem;
+    font-weight 300;
+`}
+`;
+
+const PokeAvatar = styled.img`
+  height: 15rem;
+  width: 15rem;
+
+  ${mediaQueries("mobile")`
+    height: 90px;
+    width: 90px;
+    font-size: 1rem;
+    font-weight 300;
+  `}
+`;
+
+const NameDiv = styled.div`
+  width: 100%
+  height: auto;
+  justify-content: center;
+  text-align: center;
+`;
+
+const MainDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+`;
+
+const LeftColumn = styled.div`
+  height: auto;
+  width: 50%;
+`;
+
+const RightColumn = styled.div`
+  height: auto;
+  width: 50%;
+`;
+
+const PokemonStatsContainer = styled.div`
+  height: 40px;
+  width: auto;
+  margin: auto;
+  flex-direction: column;
+`;
+
+const PokeProfileTerm = styled.h4`
+  font-weight: 900;
+`;
+
+const PokeProfileValue = styled.h5`
+  font-weight: 300;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const ChooseYouButton = styled.button`
+  height: 3rem;
+  width: 16rem;
+  border-radius: 40px;
+  margin-top: 2rem;
+  text-align: center;
+  color: white;
+  font-weight: 900;
+  background-color: ${(props) => (props.disabled ? "gray" : "red")};
+`;
 
 const PokemonProfile = ({ pokeProfile }) => {
   const { currentPokemon, setCurrentPokemon } = usePokemonParty();
